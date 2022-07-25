@@ -1,9 +1,9 @@
-function bess_pipeline_hao(subject)
+function bess_hao_synthseg(subject)
 
 system(['mkdir subjects/',subject]);
 cd(['subjects/',subject]);
-path2bgd = ['/cbica/projects/bgdimagecentral/‘];
-path2subject = [path2bgd, ‘Data/hao_data/',subject];
+path2bgd = '/cbica/projects/bgdimagecentral/';
+path2subject = [path2bgd, 'Data/hao_data/',subject];
 folders = dir([path2subject, '/session_*']);
 sessions = {folders.name};
 
@@ -21,7 +21,7 @@ for ii = 1:length(sessions)
     
 
     % segmentation
-    system([path2bgd, ’Projects/synthseg_job_code/jobSynthSeg.sh  ‘, pwd, ’/T1w_defaced.nii.gz ‘, pwd, ‘/synthseg_output’); % is the full path needed if the files are in the current directory?
+    system([path2bgd, 'Projects/synthseg_job_code/jobSynthSeg.sh  ', pwd, '/T1w_defaced.nii.gz ', pwd, '/synthseg_output']); % is the full path needed if the files are in the current directory?
     
 cd('..')
 end
